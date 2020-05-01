@@ -9,7 +9,7 @@
 <body>
 	<h2>sendRedirect테스트(if문 사용하기)</h2>
 	<form action="./ResponseSendRedirect.jsp" method="post">
-		<table border="1" width='300'>
+	<table border="1" width='300'>
 		<tr>
 			<td>아이디</td>
 			<td>
@@ -24,16 +24,19 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="확인"/>
+				<input type="submit" value="확인" />
 			</td>
 		</tr>
-		
-		</table>
+	</table>	
 	</form>
+	
+	
+	
+	
 	
 	<h2>sendRedirect테스트(JDBC 사용하기)</h2>
 	<form action="./ResponseJDBC.jsp" method="post">
-		<table border="1" width='300'>
+	<table border="1" width='300'>
 		<tr>
 			<td>아이디</td>
 			<td>
@@ -48,11 +51,10 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="확인"/>
+				<input type="submit" value="확인" />
 			</td>
 		</tr>
-		
-		</table>
+	</table>	
 	</form>
 </body>
 </html>
