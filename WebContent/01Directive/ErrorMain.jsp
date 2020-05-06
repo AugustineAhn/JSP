@@ -13,7 +13,7 @@
 //사용자가 전송한 파라미터를 request객체를 통해 받아온다.
 String strAge = request.getParameter("age");
 //JS의 document.write()와 같이 브라우저에 변수를 출력한다. 
-out.println("strAge="+ strAge);
+out.println("strAge=" + strAge);
 
 int ageAfter10 = -1;
 String errorStr = "";

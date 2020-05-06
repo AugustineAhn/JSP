@@ -1,6 +1,13 @@
 package model;
 
 import java.sql.Date;
+import java.sql.SQLException; 
+
+/*
+ DTO객체(Data Transfer Object)
+ 	: 데이터를 저장하기 위한 객체로 멤버변수, 생성자, getter/setter
+ 	메소드를 가지고 있는 클래스로 일반적인 자바빈(Bean)규약을 따른다.
+ */
 
 public class MemberDTO {
 	
@@ -45,5 +52,16 @@ public class MemberDTO {
 		this.regidate = regidate;
 	}
 	
+	@Override
+	public String toString() {
 
+		return String.format("아이디:%s, 비밀번호:%s, 이름:%s", 
+				id, pass, name);
+	}
+	
+	/*public static void main(String[] args) {
+		MemberDTO dto = new MemberDTO("kosmo", "1234", "코스모", null);
+		System.out.println(dto);
+	}
+	*/
 }
