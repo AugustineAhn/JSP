@@ -33,7 +33,7 @@ if(searchWord !=null){
 	
 }
 
-//bbs테이블에 입력된 전체 레코드 갯수를 카운트하여 반환받음.
+//board테이블에 입력된 전체 레코드 갯수를 카운트하여 반환받음.
 int totalRecordCount = dao.getTotalRecordCount(param);
 
 //조건에 맞는 레코드를 select하여 결과셋을 List컬렉션으로 반환받음
@@ -129,7 +129,7 @@ dao.close();
 				
 					<td class="text-center"><%=vNum %></td>
 					<td class="text-left">
-						<a href="BoardView.jsp?idx=<%=dto.getNum() %>">
+						<a href="BoardView.jsp?num=<%=dto.getNum() %>">
 							<%=dto.getTitle() %>
 						</a>
 					</td>
