@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <div class="copy_logo">
 	<img src="http://www.ikosmo.co.kr/images/common/logo_center_v2.jpg" 
-		alt="KOSMO Copyright" />
+		alt="KOSMO Copyright" width="150" />
 </div>
-<div class="copy_info">
+<div class="copy_info"> 
 	(주)한국소프트웨어아이앤씨(153-759) 
 	&nbsp;&nbsp;
 	서울시 금천구 가산동 426-5 월드메르디앙 2차 410호
@@ -18,13 +18,3 @@
 	<br />
 	Copyright (C) 2010 KOSMO. All rights reserved.	
 </div>	
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>타이틀</title>
-</head>
-<body>
-
-</body>
-</html>

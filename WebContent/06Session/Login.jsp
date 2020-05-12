@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>타이틀</title>
+<title>Login.jsp</title>
 </head>
 <body>
-	
-	<%@ include file="../common/CommonLink.jsp" %>
+
+<!-- 공통링크  -->
+<%@ include file="../common/CommonLink.jsp" %>
 
 <h2>로그인 페이지</h2>
 
@@ -16,7 +17,6 @@
 	<%=request.getAttribute("ERROR_MSG")==null ?
 		"" : request.getAttribute("ERROR_MSG") %>
 </span>
-
 
 <%
 //로그인 전이거나 로그인에 실패했을때 출력되는 내용
@@ -64,7 +64,7 @@ if(session.getAttribute("USER_ID")==null){
 		<tr>
 			<td style="text-align:center;">
 			<!-- 세션영역은 웹브라우저를 최초 연후 닫을때까지 그 영역이 공유되므로
-			로그인처리 페이지에서 저장된 내용을 가져올 수 있다. -->
+			로그인처리 페이지에서 저장된 내용을 가져올 수 있다.  -->
 				<%=session.getAttribute("USER_NAME") %> 회원님, 
 					로그인 하셨습니다.
 				<br />
@@ -75,6 +75,5 @@ if(session.getAttribute("USER_ID")==null){
 		</tr>
 	</table>
 <% } %>
-	
 </body>
 </html>

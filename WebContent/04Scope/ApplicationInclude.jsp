@@ -5,34 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>타이틀</title>
+<title>ApplicationInclude.jsp</title>
 </head>
 <body>
 	<h2>인클루드 된 페이지</h2>
 	
 	<h3>page영역에 저장된 객체</h3>
 	<%
-	MemberDTO pageMember = (MemberDTO)pageContext.getAttribute("pageMember");
+	MemberDTO pageMember =
+		(MemberDTO)pageContext.getAttribute("pageMember");
 	String pMemberStr = 
-			String.format("아이디:%s, 이름:%s  ,비번:%s,  등록일:%s",
-			pageMember!= null ? pageMember.getId():"",
-			pageMember!= null ? pageMember.getPass():"",
-			pageMember!= null ? pageMember.getName():"",
-			pageMember!= null ? pageMember.getRegidate():"");
-		out.println(pMemberStr);
+		String.format("아이디:%s,이름:%s,비번:%s,등록일:%s",
+			pageMember!=null ? pageMember.getId():"",
+			pageMember!=null ? pageMember.getPass():"",
+			pageMember!=null ? pageMember.getName():"",
+			pageMember!=null ? pageMember.getRegidate():"");
+	out.println(pMemberStr);
 	%>
 	
-	<h3></h3>
-	
+	<h3>request영역에 저장된 객체</h3>
 	<%
-	MemberDTO requestMember = (MemberDTO)request.getAttribute("requestMember");
+	MemberDTO requestMember =
+		(MemberDTO)request.getAttribute("requestMember");
 	String rMemberStr = 
-			String.format("아이디:%s, 이름:%s  ,비번:%s,  등록일:%s",
-			pageMember!= null ? pageMember.getId():"",
-			pageMember!= null ? pageMember.getPass():"",
-			pageMember!= null ? pageMember.getName():"",
-			pageMember!= null ? pageMember.getRegidate():"");
-		out.println(rMemberStr);
+		String.format("아이디:%s,이름:%s,비번:%s,등록일:%s",
+			requestMember!=null ? requestMember.getId():"",
+			requestMember!=null ? requestMember.getPass():"",
+			requestMember!=null ? requestMember.getName():"",
+			requestMember!=null ? requestMember.getRegidate():"");
+	out.println(rMemberStr);
 	%>
 </body>
 </html>

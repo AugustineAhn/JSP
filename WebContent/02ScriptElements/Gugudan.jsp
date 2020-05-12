@@ -36,7 +36,7 @@
 		for(int dan=2 ; dan<=9 ; dan++){
 		%>
 		<tr>
-			<%
+			<%	 
 			for(int su=1 ; su<=9 ; su++){
 			%>			
 			<td><%=dan %>*<%=su %>=<%=(dan*su) %></td>
@@ -48,9 +48,7 @@
 		}
 		%>	
 	</table>
-	
-	
-	 
+		 
 </body>
 </html>
 

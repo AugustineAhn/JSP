@@ -14,9 +14,9 @@
 		<li>query : <%=request.getParameter("query") %></li>
 		<li>name : <%=request.getParameter("name") %></li>
 		<li>id : <%=request.getParameter("id") %></li>
-		
-	<h3>영역에 저장되어 전달되 객체</h3>
-	<%=request.getAttribute("member") %>
-	</ol>
+	</ol>	
+
+	<h3>영역에 저장되어 전달된 객체</h3>
+	<%=request.getAttribute("member") %>	
 </body>
 </html>
