@@ -57,8 +57,7 @@ public class MyTagLib {
 		return returnStr;		
 	}
 	
-	public static boolean memberLogin(String id, String pw,
-			String drv, String url) {
+	public static boolean memberLogin(String id, String pw,String drv, String url) {
 		//1. DB연결을 위한 객체생성
 		MemberDAO dao = new MemberDAO(drv, url);
 		//2. 아이디/패스워드를 통한 회원인증 및 결과반환
