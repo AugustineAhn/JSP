@@ -1,5 +1,7 @@
 package controller;
 
+import org.eclipse.jdt.core.compiler.CompilationProgress;
+
 public class DataRoomDTO {
 	//멤버변수
 	
@@ -67,4 +69,8 @@ public class DataRoomDTO {
 	public void setVisitcount(int visitcount) {
 		this.visitcount = visitcount;
 	}
+	
+	
+	
+	
 }

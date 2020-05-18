@@ -189,8 +189,8 @@ dao.close();
 					<!-- 각종 버튼 부분 -->
 					<!-- <button type="button" class="btn">Basic</button> -->
 					<button type="button" class="btn btn-primary" 
-						onclick="location.href='BoardWrite.jsp';">글쓰기</button>
-					<!-- <button type="button" class="btn btn-secondary">수정하기</button>
+						onclick="location.href='B
+ass="btn btn-secondary">수정하기</button>
 					<button type="button" class="btn btn-success">삭제하기</button>
 					<button type="button" class="btn btn-info">답글쓰기</button>
 					<button type="button" class="btn btn-warning">리스트보기</button>

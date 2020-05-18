@@ -84,8 +84,7 @@
             				+ loop.index) }
             			</td>
             			<td>
-            				<a href="../DataRoom/DataView?idx=${row.idx }
-            				&nowPage=${param.nowPage }">
+            				<a href="../DataRoom/DataView?idx=${row.idx }&nowPage=${param.nowPage }">
             					${row.title }
             				</a>
             			</td>
