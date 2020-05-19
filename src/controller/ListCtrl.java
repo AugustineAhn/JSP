@@ -5,10 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import util.PagingUtil;
 
 public class ListCtrl extends HttpServlet{
 
@@ -28,12 +31,11 @@ public class ListCtrl extends HttpServlet{
 		
 		String searchColumn = req.getParameter("searchColumn");
 		String searchWord = req.getParameter("searchWord");
-		if(searchWord != null) {
+		if(!(searchWord != null || searchWord.equals(""))) {
 			
 			//검색어가 있는 경우 파라미터를 Map에 저장 및 쿼리스트링 저장
 			addQueryString = 
-			String .format("searchColumn=%s&searchWord=%s&", 
-							searchColumn, searchWord);
+					String .format("searchColumn=%s&searchWord=%s&", searchColumn, searchWord);
 			param.put("Column", searchColumn);
 			param.put("Word", searchWord);
 		}
@@ -43,8 +45,47 @@ public class ListCtrl extends HttpServlet{
 		//전체 카운트수를 Map에 저장함. 차후 View로 전달할 예정임.
 		param.put("totalCount", totalRecordCount);
 		
+		
+		//페이지수 계산을 위한 페이지설정값 가져오기
+		ServletContext application = this.getServletContext();
+		int pageSize = 
+				Integer.parseInt(application.getInitParameter("PAGE_SIZE"));
+		int blockPage =
+		Integer.parseInt(application.getInitParameter("BLOCK_PAGE"));
+		
+		int totalPage=
+				(int)Math.ceil((double)totalRecordCount/pageSize);
+		
+		System.out.println("전체레코드수:" + totalRecordCount);
+		System.out.println("전체페이지수:" + totalPage);
+		
+		int nowPage = (req.getParameter("nowPage")==null
+				|| req.getParameter("nowPage").equals(""))
+				?
+				1 : Integer.parseInt(req.getParameter("nowPage"));
+		
+		int start = (nowPage -1)*pageSize +1;
+		int end = nowPage * pageSize;
+		param.put("start", start);
+		param.put("end", end);
+		param.put("totalPage", totalPage);
+		param.put("nowPage", nowPage);
+		param.put("totalCount", totalRecordCount);
+		param.put("pageSize", pageSize);
+		
+		String pagingImg = PagingUtil.pagingBS4(totalRecordCount,
+				pageSize, blockPage, nowPage,
+				"../DataRoom/DataList?" + addQueryString);
+		param.put("pagingImg", pagingImg);
+		
+		
+		
+		
 		//테이블의 전체 ResultSet을 가져옴.(페이지 처리 X)
-		List<DataRoomDTO> lists = dao.selectList(param);
+		//List<DataRoomDTO> lists = dao.selectList(param);
+		
+		//테이블의 해당페이지 구간의 ResultSet을 가져옴.(페이지 처리 X)
+		List<DataRoomDTO> lists = dao.selectListPage(param);
 		
 		//커넥션풀에 커넥션 객체 반납
 		dao.close();

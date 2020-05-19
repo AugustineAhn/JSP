@@ -1,6 +1,7 @@
 package controller;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 	public class DataRoomDAO {
@@ -82,7 +84,7 @@ import javax.sql.DataSource;
 			
 			String sql = "SELECT * FROM dataroom ";
 			if(map.get("Word")!=null) {
-				sql+=" WHERE " +map.get("Column")+" "
+				sql +=" WHERE " +map.get("Column")+" "
 					+ " LIKE '%" + map.get("Word")+"%' ";
 			}
 			sql += " ORDER BY idx DESC";
@@ -227,4 +229,116 @@ import javax.sql.DataSource;
 			
 			return affected;
 		}
+		
+		public DataRoomDAO(ServletContext ctx) {
+			try {
+				Class.forName(ctx.getInitParameter("JDBCDriver"));
+				String id="kosmo";
+				String pw="1234";
+				
+				con=DriverManager.getConnection(
+						ctx.getInitParameter("ConnectionURL"), id, pw);
+				System.out.println("DB 연결성공");
+				
+			}
+			catch (Exception e) {
+				System.out.println("DB 연결실패 ");
+				e.printStackTrace();
+			
+			}
+		}
+		
+		public int update(DataRoomDTO dto) {
+			int affected = 0;
+			try {
+				String query = "UPDATE dataroom SET"
+						+ " title=?, name=?, content=? "
+						+ " , attachedfile=?, pass=? "
+						+ " WHERE idx=? ";
+				
+				psmt=con.prepareStatement(query);
+				psmt.setString(1, dto.getTitle());
+				psmt.setString(2, dto.getName());
+				psmt.setString(3, dto.getContent());
+				psmt.setString(4, dto.getAttachedfile());
+				psmt.setString(5, dto.getPass());
+				
+				//
+				psmt.setString(6, dto.getIdx());
+				
+				affected = psmt.executeUpdate();
+			}
+			catch (Exception e) {
+				System.out.println("예외발생");
+				e.printStackTrace();
+			}
+			
+			return affected;
+		}
+		
+		public void downCountPlus(String idx) {
+			String sql = " UPDATE dataroom SET "
+					+ " downcount=downcount+1 "
+					+ " WHERE idx=? ";
+			
+			try {
+				psmt = con.prepareStatement(sql);
+				psmt.setString(1, idx);
+				psmt.executeUpdate();
+			}
+			catch (Exception e) {
+
+			}
+		}
+		
+		
+		public List<DataRoomDTO> selectListPage(Map map){
+			
+			List<DataRoomDTO> bbs = new Vector<DataRoomDTO>();
+			
+			String sql = " "
+					+"SELECT * FROM (" 
+					+"    SELECT Tb.*, rownum rNum FROM ("
+					+"        SELECT * FROM dataroom ";
+			
+			if(map.get("Word")!=null) {
+				sql +=" WHERE " +map.get("Column")+" "
+					+ " LIKE '%" + map.get("Word")+"%' ";
+			}
+			sql += " ORDER BY idx DESC"
+					+"     ) Tb"
+					+" )"
+					+" WHERE rNum BETWEEN ? and ?";
+			System.out.println("쿼리문:" +sql);
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+			psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+			rs = psmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				
+				DataRoomDTO dto = new DataRoomDTO();
+				
+				dto.setIdx(rs.getString(1));
+				dto.setName(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setPostdate(rs.getDate(5));
+				dto.setAttachedfile(rs.getString(6));
+				dto.setDowncount(rs.getInt(7));
+				dto.setPass(rs.getString(8));
+				dto.setVisitcount(rs.getInt(9));
+				
+				bbs.add(dto);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return bbs;
+	}
+	
 }

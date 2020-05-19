@@ -13,7 +13,7 @@
 	<div class="row">		
 		<jsp:include page="../common/boardLeft.jsp" />
 		<div class="col-9 pt-3">
-			<h3>게시판 - <small>Write(작성)</small></h3>
+			<h3>자료실 - <small>Edit(수정)</small></h3>
 <script>
 	//유기명함수
 	function checkValidate(frm){		
@@ -58,12 +58,16 @@
 	파일 업로드를 위해서는 반드시 enctype을 선언해야 한다. 그렇지 
 	않으면 파일은 서버로 전송되지 않는다.
  -->
-<form name="writeFrm" method="post" action="../DataRoom/DataWrite" 
+<form name="writeFrm" method="post" action="../DataRoom/DataEdit" 
 	enctype="multipart/form-data"
 	onsubmit="return checkValidate(this);">
 	
+	<input type="hidden"  name="idx" value="${dto.idx }"/>
+	<input type="hidden"  name="nowPage" value="${param.nowPage }"/>
+	<input type="hidden"  name="originalfile" value="${dto.attachedfile }"/>
+
 <colgroup>
-	<col width="20%"/>
+	<col width="25%"/>
 	<col width="*"/>
 </colgroup>
 <tbody>
@@ -71,23 +75,22 @@
 		<th class="text-center align-middle">작성자</th>
 		<td>
 			<input type="text" class="form-control"	style="width:100px;"
-				name="name"/>
+				name="name" value="${dto.name }"/>
 		</td>
 	</tr>
 	<tr>
 		<th class="text-center" 
 			style="vertical-align:middle;">패스워드</th>
 		<td>
-			<input type="password" class="form-control"
-				style="width:200px;" name="pass"/>
+			<input type="password" class="form-control" style="width:200px;" 
+			name="pass" value="${dto.pass }"/>
 		</td>
 	</tr>
 	<tr>
 		<th class="text-center"
 			style="vertical-align:middle;">제목</th>
 		<td>
-			<input type="text" class="form-control" 
-				name="title" />
+			<input type="text" class="form-control" name="title" value="${dto.title }"/>
 		</td>
 	</tr>
 	<tr>
@@ -95,13 +98,14 @@
 			style="vertical-align:middle;">내용</th>
 		<td>
 			<textarea rows="10" 
-				class="form-control" name="content"></textarea>
+				class="form-control" name="content">${dto.content }</textarea>
 		</td>
 	</tr>
 	<tr>
 		<th class="text-center"
 			style="vertical-align:middle;">첨부파일</th>
 		<td>
+			파일명: ${dto.attachedfile } <br/>
 			<input type="file" class="form-control"  name="attachedfile" />
 		</td>
 	</tr> 
@@ -111,10 +115,17 @@
 			<div class="row mb-3">
 				<div class="col text-right">
 					<!-- 각종 버튼 부분 -->
-					
-					<button type="submit" class="btn btn-danger">전송하기</button>
+					<!-- <button type="button" class="btn">Basic</button> -->
+					<!-- <button type="button" class="btn btn-primary" 
+						onclick="location.href='BoardWrite.jsp';">글쓰기</button> -->
+					<!-- <button type="button" class="btn btn-secondary">수정하기</button>
+					<button type="button" class="btn btn-success">삭제하기</button>
+					<button type="button" class="btn btn-info">답글쓰기</button>
+					<button type="button" class="btn btn-light">Light</button>
+					<button type="button" class="btn btn-link">Link</button> -->
+					<button type="submit" class="btn btn-danger">작성완료</button>
 					<button type="reset" class="btn btn-dark">Reset</button>
-					<button type="button" class="btn btn-warning" onclick="location.href='../DataRoom/DataList';">리스트보기</button>
+					<button type="button" class="btn btn-warning" onclick="location.href='../DataRoom/DataList?nowPage=${param.nowPage}';">리스트보기</button>
 				</div>
 				</form>
 			</div>

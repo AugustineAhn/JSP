@@ -52,6 +52,7 @@ dao.close();
 			<h3>게시판 - <small>이런저런 기능이 있는 게시판입니다.</small></h3>
 			
 			<div class="row">
+			
 			<!-- 검색부분 -->
 			<form class="form-inline ml-auto" name="searchFrm" method="get">	
 				<div class="form-group">
