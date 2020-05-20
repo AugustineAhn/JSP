@@ -36,6 +36,7 @@ public class ListCtrl extends HttpServlet{
 			//검색어가 있는 경우 파라미터를 Map에 저장 및 쿼리스트링 저장
 			addQueryString = 
 					String .format("searchColumn=%s&searchWord=%s&", searchColumn, searchWord);
+			
 			param.put("Column", searchColumn);
 			param.put("Word", searchWord);
 		}

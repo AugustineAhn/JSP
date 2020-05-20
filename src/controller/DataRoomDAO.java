@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.sql.Connection;
@@ -141,6 +142,7 @@ import javax.sql.DataSource;
 			return affected;
 		}
 		
+		//조회수 출력
 		public void updateVisitCount(String idx) {
 			
 			String sql = "UPDATE dataroom SET "
@@ -156,6 +158,7 @@ import javax.sql.DataSource;
 				
 			}
 		}
+		
 		
 		public DataRoomDTO selectView(String idx) {
 			
@@ -230,6 +233,8 @@ import javax.sql.DataSource;
 			return affected;
 		}
 		
+		
+		
 		public DataRoomDAO(ServletContext ctx) {
 			try {
 				Class.forName(ctx.getInitParameter("JDBCDriver"));
@@ -247,6 +252,8 @@ import javax.sql.DataSource;
 			
 			}
 		}
+		
+		
 		
 		public int update(DataRoomDTO dto) {
 			int affected = 0;
@@ -276,6 +283,8 @@ import javax.sql.DataSource;
 			return affected;
 		}
 		
+		
+		
 		public void downCountPlus(String idx) {
 			String sql = " UPDATE dataroom SET "
 					+ " downcount=downcount+1 "
@@ -290,6 +299,7 @@ import javax.sql.DataSource;
 
 			}
 		}
+		
 		
 		
 		public List<DataRoomDTO> selectListPage(Map map){
