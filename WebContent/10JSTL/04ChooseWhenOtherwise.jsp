@@ -42,7 +42,7 @@
 		국어:<input type="text" name="kor" /> <br />
 		영어:<input type="text" name="eng" /> <br />
 		수학:<input type="text" name="math" /> <br />
-		<input type="submit" value= "학점구하기" />
+			<input type="submit" value= "학점구하기" />
 	</form>
 	<c:if test="${not empty param.kor }">
 		<c:set var="avg" value="${(param.kor+param.eng+param.math)/3 }"/>

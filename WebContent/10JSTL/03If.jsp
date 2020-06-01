@@ -108,7 +108,7 @@
 		첫번째 if문에서의 결과에 따라 두번째 if문은 반대의 결과를 가지게되는
 		구조로 작성되었다. 즉 loginResult가 true값으로
 		설정된다면 두번째 if문에서는 false의 값으로 바뀌게 된다.
-		  -->
+		-->
 		<c:if test="${param.user eq  'kosmo' and param.pass eq  '1234'}" 
 			var="loginResult">
 		${param.user }님, 하이 <br />

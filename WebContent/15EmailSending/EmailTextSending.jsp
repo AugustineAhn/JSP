@@ -1,15 +1,14 @@
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
 <%@page import="smtp.SMTPAuth"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%
 request.setCharacterEncoding("UTF-8");
 SMTPAuth smtp = new SMTPAuth();
 
-Map<String, String> emailContent = new HashMap<String, String>();
+Map<String,String> emailContent = new HashMap<String,String>();
 emailContent.put("from", request.getParameter("from"));
 emailContent.put("to", request.getParameter("to"));
 emailContent.put("subject", request.getParameter("subject"));
@@ -26,17 +25,15 @@ if(request.getParameter("content")!=null){
 	
 	return;
 }
-
-%>
-
+%>     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EmailTextSending.jsp</title>
+<title>EmailTextSending</title>
 </head>
 <body>
-	<h2>이메일 발송하기</h2>
+<h2>이메일 발송하기</h2>
 <form method="post" name="mailForm">
 <table border=1>
 	<tr>	
@@ -69,6 +66,5 @@ if(request.getParameter("content")!=null){
 	</tr>
 </table>
 </form>
-	
 </body>
 </html>

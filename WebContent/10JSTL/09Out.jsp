@@ -58,7 +58,7 @@
 	<h3>페이지 링크에 응용하기</h3>
 	<c:url value="/08Board2/BoardList.jsp?nowPage=" /><c:out value="${null }" default="1"/>
 	<hr />
-	<!--주의] 한줄로 붙여서작서하세요. 줄바꿈하면 공백이들어갑니다.  -->
+	<!--주의] 한줄로 붙여서작성하세요. 줄바꿈하면 공백이들어갑니다.  -->
 	<a href="<c:url value="/08Board2/BoardList.jsp?nowPage=" /><c:out value="${param.nowPage }" default="1"/>">회원제게시판 리스트 바로가기</a>
 	
 	
