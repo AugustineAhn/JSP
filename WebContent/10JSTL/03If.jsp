@@ -30,7 +30,7 @@
 		true가 저장된다.
 	 -->
 	<h3>JSTL의 if태그로 짝수/홀수 판단하기</h3>\
-	<c:if test="{numBar mod 2 eq 0}" var="result">${numVar }는 짝수입니다.<br/>
+	<c:if test="{numVar mod 2 eq 0}" var="result">${numVar }는 짝수입니다.<br/>
 	</c:if>
 	\${numVar }는 짝수입니다.<br/>
 	

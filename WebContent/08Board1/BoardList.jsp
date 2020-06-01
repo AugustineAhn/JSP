@@ -39,6 +39,7 @@ List<BbsDTO> bbs = dao.selectList(param);
 
 //DB자원해제
 dao.close();
+
 %>      
 <!DOCTYPE html>
 <html lang="en">

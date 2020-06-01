@@ -51,7 +51,7 @@ int blockPage = Integer.parseInt(application.getInitParameter("BLOCK_PAGE"));
 int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
 
 /*
-현제페이지번호 : 파라미터가 없을때는 무조건 1페이지로 지정하고, 있을때는 해당 값을 
+현재페이지번호 : 파라미터가 없을때는 무조건 1페이지로 지정하고, 있을때는 해당 값을 
 	 얻어와서 지정한다. 즉 리스트에 처음 진입했을때는 1페이지가 된다. 
 */
 int nowPage = (request.getParameter("nowPage")==null 
@@ -168,7 +168,7 @@ dao.close();
 				<tr>
 					<td class="text-center"><%=vNum %></td>
 					<td class="text-left">
-<a href="BoardView.jsp?num=<%=dto.getNum() %>
+					<a href="BoardView.jsp?num=<%=dto.getNum() %>
 		&nowPage=<%=nowPage%>&<%=queryStr%>"><%=dto.getTitle() %></a>
 					</td>
 					<td class="text-center"><%=dto.getId() %></td>
@@ -189,15 +189,14 @@ dao.close();
 					<!-- 각종 버튼 부분 -->
 					<!-- <button type="button" class="btn">Basic</button> -->
 					<button type="button" class="btn btn-primary" 
-						onclick="location.href='B
-ass="btn btn-secondary">수정하기</button>
+						onclick="location.href='Bass="btn btn-secondary">수정하기</button>
 					<button type="button" class="btn btn-success">삭제하기</button>
 					<button type="button" class="btn btn-info">답글쓰기</button>
 					<button type="button" class="btn btn-warning">리스트보기</button>
 					<button type="button" class="btn btn-danger">전송하기</button>
 					<button type="button" class="btn btn-dark">Reset</button>
 					<button type="button" class="btn btn-light">Light</button>
-					<button type="button" class="btn btn-link">Link</button> -->
+					<button type="button" class="btn btn-link">Link</button> 
 				</div>
 			</div>
 			<div class="row mt-3">

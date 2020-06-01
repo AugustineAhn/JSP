@@ -76,6 +76,7 @@
 	<ul>
 		<li>\${elArray[3]}
 				: ${elArray[3]} [에러NO, 미출력]</li>
+				
 		<li>\${elCollection[3]}
 				: ${elCollection[3]} [에러NO, 미출력]</li>
 	</ul>

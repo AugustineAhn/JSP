@@ -2,7 +2,7 @@ package controller;
 
 import org.eclipse.jdt.core.compiler.CompilationProgress;
 
-public class DataRoomDTO {
+public class DataroomDTO {
 	//멤버변수
 	
 	private String idx;

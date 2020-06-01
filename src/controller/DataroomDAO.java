@@ -14,13 +14,13 @@ import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-	public class DataRoomDAO {
+	public class DataroomDAO {
 		
 		Connection con;
 		PreparedStatement psmt;
 		ResultSet rs;
 		
-		public DataRoomDAO() {
+		public DataroomDAO() {
 		try {
 			
 			Context initCtx	= new InitialContext();
@@ -79,9 +79,9 @@ import javax.sql.DataSource;
 		}
 		
 		//게시물 리스트 출력하기(페이지처리 X)
-		public List<DataRoomDTO> selectList(Map map){
+		public List<DataroomDTO> selectList(Map map){
 			
-			List<DataRoomDTO> bbs = new Vector<DataRoomDTO>();
+			List<DataroomDTO> bbs = new Vector<DataroomDTO>();
 			
 			String sql = "SELECT * FROM dataroom ";
 			if(map.get("Word")!=null) {
@@ -95,7 +95,7 @@ import javax.sql.DataSource;
 				rs=psmt.executeQuery();
 				while(rs.next()) {
 					
-					DataRoomDTO dto = new DataRoomDTO();
+					DataroomDTO dto = new DataroomDTO();
 					
 					dto.setIdx(rs.getString(1));
 					dto.setName(rs.getString(2));
@@ -117,7 +117,7 @@ import javax.sql.DataSource;
 		}
 		
 		//자료실 글쓰기 처리
-		public int insert(DataRoomDTO dto) {
+		public int insert(DataroomDTO dto) {
 			
 			int affected = 0;
 			
@@ -160,9 +160,9 @@ import javax.sql.DataSource;
 		}
 		
 		
-		public DataRoomDTO selectView(String idx) {
+		public DataroomDTO selectView(String idx) {
 			
-			DataRoomDTO dto = null;
+			DataroomDTO dto = null;
 			String sql = "SELECT * FROM dataroom "
 					+ " WHERE idx=? ";
 			try {
@@ -171,7 +171,7 @@ import javax.sql.DataSource;
 				rs=psmt.executeQuery();
 				
 				if(rs.next()) {
-					dto = new DataRoomDTO();
+					dto = new DataroomDTO();
 					
 					dto.setIdx(rs.getString(1));
 					dto.setName(rs.getString(2));
@@ -235,7 +235,7 @@ import javax.sql.DataSource;
 		
 		
 		
-		public DataRoomDAO(ServletContext ctx) {
+		public DataroomDAO(ServletContext ctx) {
 			try {
 				Class.forName(ctx.getInitParameter("JDBCDriver"));
 				String id="kosmo";
@@ -255,7 +255,7 @@ import javax.sql.DataSource;
 		
 		
 		
-		public int update(DataRoomDTO dto) {
+		public int update(DataroomDTO dto) {
 			int affected = 0;
 			try {
 				String query = "UPDATE dataroom SET"
@@ -302,9 +302,9 @@ import javax.sql.DataSource;
 		
 		
 		
-		public List<DataRoomDTO> selectListPage(Map map){
+		public List<DataroomDTO> selectListPage(Map map){
 			
-			List<DataRoomDTO> bbs = new Vector<DataRoomDTO>();
+			List<DataroomDTO> bbs = new Vector<DataroomDTO>();
 			
 			String sql = " "
 					+"SELECT * FROM (" 
@@ -330,7 +330,7 @@ import javax.sql.DataSource;
 			
 			while(rs.next()) {
 				
-				DataRoomDTO dto = new DataRoomDTO();
+				DataroomDTO dto = new DataroomDTO();
 				
 				dto.setIdx(rs.getString(1));
 				dto.setName(rs.getString(2));
